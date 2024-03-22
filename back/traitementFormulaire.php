@@ -1,5 +1,5 @@
 <?php
-require_once './traitementFormulaireContact.php';
+require_once 'traitementFormulaireContact.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
 

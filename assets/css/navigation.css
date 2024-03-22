@@ -3,6 +3,7 @@ nav {
   display: flex;
   justify-content: flex-end;
   border-bottom: 3px solid var(--primary-color);
+  background-color: var(--primary-color);
 }
 nav ul {
   display: flex;
@@ -17,14 +18,14 @@ nav ul :not(.active)::after {
   display: block;
   width: 0%;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: white;
 }
 nav ul li::after {
   content: "";
   display: block;
   width: 0%;
   height: 3px;
-  background-color: var(--primary-color);
+  background-color: white;
 }
 nav ul li:not(.active):hover::after {
   animation: baractive 0.5s forwards;
@@ -39,4 +40,5 @@ nav ul li:not(.active):hover::after {
 }
 nav ul li {
   padding-right: 20px;
+  font-weight: 900;
 }

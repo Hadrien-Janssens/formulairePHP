@@ -1,8 +1,8 @@
 <?php
 $metaDescription = "ici vous trouverez la page d'acceuil de mon site";
-$pageTitre = "acceuil";
+$pageTitre = "accueil";
 require_once "./header.php";
 ?>
 <div class="container">
-    <h1>Acceuil</h1>
+    <h1>Accueil</h1>
 </div>
