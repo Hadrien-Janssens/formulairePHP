@@ -2,7 +2,10 @@
 $metaDescription = "ici vous trouverez la page d'connexion de mon site";
 $pageTitre = "connexion";
 require_once "./header.php";
-require_once __DIR__."/../back/database/connexionUser.php";
+require_once __DIR__."/../back/models/user_model.php";
+if (!empty($_POST)) {
+    connecterUser($_POST['pseudo'], $_POST['password']);
+}
 ?>
 <div class="container">
 

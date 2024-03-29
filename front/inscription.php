@@ -3,8 +3,9 @@ require "../back/traitementFormulaire.php";
 $metaDescription = "ici vous trouverez la page d'inscription de mon site";
 $pageTitre = "inscription";
 require_once "./header.php";
-require_once __DIR__."/../back/database/createUser.php";
-$erreurs = traitementFormulaireInscription($_POST);
+require_once __DIR__."/../back/models/user_model.php";
+print_r($_POST);
+$erreurs = traitementFormulaireInscription($_POST, $regles);
 ?>
 <div class="container">
     <!-- le message d'envoie avec succes et envoie de mail-->
@@ -15,8 +16,8 @@ $erreurs = traitementFormulaireInscription($_POST);
         elseif (empty($erreurs) && !empty($_POST)) {
             createUser($_POST['pseudo'],$_POST["email"],$_POST['password']);
             echo  "Inscription réussie";
-            header('Location: /cours-christophe/front/succesInscription.php');
-            exit();
+            // header('Location: /cours-christophe/front/succesInscription.php');
+            // exit();
         }
     ?>
 

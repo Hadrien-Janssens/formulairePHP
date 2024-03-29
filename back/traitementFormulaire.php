@@ -1,6 +1,8 @@
 <?php
 require_once 'traitementFormulaireContact.php';
 require_once 'traitementFormulaireInscription.php';
+require_once __DIR__."/models/user_model.php";
+
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
 
@@ -10,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
         traitementFormulaireContact($_POST);
         break;
     case 'formInscription':
-        traitementFormulaireInscription($_POST);
+        traitementFormulaireInscription($_POST,$regles);
         break;
     case 'null':
         echo "impossible de traiter ce formulaire car le nom du formulaire est introuvable";
