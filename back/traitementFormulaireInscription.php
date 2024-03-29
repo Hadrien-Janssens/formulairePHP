@@ -7,3 +7,4 @@ function traitementFormulaireInscription($dataArray, $regles) {
     $erreurs = traitement($regles,$dataArray);
     return $erreurs;
 }
+echo ' bonjour';
