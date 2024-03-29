@@ -3,6 +3,8 @@ function classSuivantLeChemin () {
     $pages = [
         'index.php' => 'Accueil',
         'contact.php' => 'Contact',
+        'inscription.php' => 'Inscription',
+        'connexion.php'=> 'Connexion'
     ];
     foreach ($pages as $page => $label) {
         $class = ($_SERVER['REQUEST_URI'] == '/cours-christophe/' . $page) ? 'active' : '';

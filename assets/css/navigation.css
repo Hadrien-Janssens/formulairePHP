@@ -4,6 +4,7 @@ nav {
   justify-content: flex-end;
   border-bottom: 3px solid var(--primary-color);
   background-color: var(--primary-color);
+  margin: 0 auto;
 }
 nav ul {
   display: flex;
@@ -41,4 +42,8 @@ nav ul li:not(.active):hover::after {
 nav ul li {
   padding-right: 20px;
   font-weight: 900;
+}
+nav ul li a {
+  color: white;
+  text-decoration: none;
 }

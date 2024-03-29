@@ -10,14 +10,12 @@ body {
 li {
   list-style: none;
 }
-a {
-  color: white;
-  text-decoration: none;
-}
+
 h1 {
   color: var(--primary-color);
 }
 
 .container {
   padding: 20px;
+  margin: 0 auto;
 }

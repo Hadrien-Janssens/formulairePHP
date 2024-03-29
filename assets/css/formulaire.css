@@ -1,44 +1,41 @@
-.form-container {
-  position: relative;
+p {
+  text-align: right;
 }
 .layout {
-  max-width: 800px;
-  margin: 15px auto 0px;
+  max-width: 600px;
   display: flex;
-  justify-content: flex-end;
-  border-radius: 14px;
+  justify-content: space-between;
+  border-radius: 20px;
   color: white;
-  margin-top: 30px;
   font-family: sans-serif;
-  background-image: url("./mathyas-kurmann-fb7yNPbT0l8-unsplash.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+  background-color: var(--primary-color);
   filter: brightness(90%) grayscale(10%);
   box-shadow: 0px 7px 20px 0px rgba(0, 0, 0, 0.482);
+  margin: 0 auto;
 }
 .left {
-  width: 45%;
-  border-radius: 12px;
-  padding: 20px;
+  border-radius: 20px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
 }
 .left h2 {
-  font-size: 45px;
+  font-size: 30px;
   text-shadow: 0px 0px 30px #000000;
 }
 form {
   display: flex;
   flex-direction: column;
-  border-radius: 14px;
-  border-bottom-left-radius: 40px;
-  border-top-left-radius: 40px;
-  padding: 50px 70px;
+  border-radius: 20px;
+  padding: 20px;
   width: 55%;
+  color: var(--primary-color);
+  background-color: rgb(219, 219, 219);
   backdrop-filter: blur(10px);
+  max-width: 300px;
+  margin: 0 auto;
 }
 form label {
   margin-top: 20px;
@@ -76,12 +73,15 @@ form input[type="submit"] {
 form input[type="submit"]:hover {
   background-color: rgb(74, 173, 51);
 }
+form label:has(+ input[required]):after {
+  content: "*";
+  position: relative;
+  left: 5px;
+}
 .erreur {
-  color: #ff977d;
-  text-align: center;
+  color: #f93624;
   max-width: 300px;
   border-radius: 12px;
-  margin: 0 auto;
 }
 .succes {
   background-color: var(--primary-color);
