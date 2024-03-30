@@ -2,13 +2,14 @@
 $metaDescription = "ici vous trouverez la page d'connexion de mon site";
 $pageTitre = "connexion";
 require_once "./header.php";
-require_once __DIR__."/../back/database/connexionUser.php";
+// require_once __DIR__."/./back/database/connexionUser.php";
+require_once __DIR__."/back/traitementFormulaire.php";
 ?>
+
 <div class="container">
-
-
     <form action="" method="POST">
         <h1>Connexion</h1>
+        <input type="hidden" name="formName" value="formConnection">
         <label for="pseudo">Pseudo</label>
         <input type="text" id="pseudo" name="pseudo" required minlength="2" maxlength="255">
         <label for="password">Mot de passe</label>

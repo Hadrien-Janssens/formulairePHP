@@ -39,30 +39,30 @@ function traitement(array $regles, array $dataArray , ?array $erreurs=[]):array 
                 }
             }
             //verification champs unique
-            if (isset($regles[$key]['unique']) && $regles[$key]['unique']===true )  {
-                try
-                {
+            // if (isset($regles[$key]['unique']) && $regles[$key]['unique']===true )  {
+            //     try
+            //     {
                 
-                    $pdo = connexionDB();
-                    $requete = "SELECT UseId FROM Users WHERE "."Use".ucfirst($key)." = :markup" ;
-                    $stmt = $pdo->prepare($requete);
-                    $stmt->bindParam(':markup', $dataArray[$key], PDO::PARAM_STR);
-                    $stmt->execute();
-                    $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
-                    if (isset($utilisateur['UseId'])&& $utilisateur['UseId'] ) {
-                        $erreurs[$key] = "ce $key est déjà pris";
-                    }
-                }
-                catch(\PDOException $e)
-                {
-                    gerer_exceptions($e);
-                }
-            }
+            //         $pdo = connexionDB();
+            //         $requete = "SELECT UseId FROM Users WHERE "."Use".ucfirst($key)." = :markup" ;
+            //         $stmt = $pdo->prepare($requete);
+            //         $stmt->bindParam(':markup', $dataArray[$key], PDO::PARAM_STR);
+            //         $stmt->execute();
+            //         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
+            //         if (isset($utilisateur['UseId'])&& $utilisateur['UseId'] ) {
+            //             $erreurs[$key] = "ce $key est déjà pris";
+            //         }
+            //     }
+            //     catch(\PDOException $e)
+            //     {
+            //         gerer_exceptions($e);
+            //     }
+            // }
         }
         // cas de modification de l'attribut name, renvoie une erreur générale du formulaire 
         elseif(!empty($dataArray)) {
             $erreurs['form'] = false ; 
         }
     }
-    return $erreurs;
+    return [$erreurs, $dataArray];
 }

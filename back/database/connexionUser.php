@@ -1,20 +1,19 @@
 <?php
 require_once __DIR__."/connexionDB.php";
-if (isset($_POST) && !empty($_POST)) {
 
+function connectionUser($pseudo, $password) {
     try
     {
         $pdo = connexionDB();
         // rechercher les données de l'utilisateur en fonction du pseudo entré
         $requete = "SELECT * FROM Users WHERE UsePseudo = :pseudo";
         $stmt = $pdo->prepare($requete);
-        $stmt->bindParam(':pseudo', $_POST['pseudo'], PDO::PARAM_STR);
+        $stmt->bindParam(':pseudo', $pseudo, PDO::PARAM_STR);
         $stmt->execute();
         //recupere toutes les données de l'utilisateur
         $utilisateur = $stmt->fetch(PDO::FETCH_ASSOC);
-
         //tester si le mot de passe correcspond a l'identifiant
-        if (password_verify($_POST['password'], $utilisateur['UsePassword'])) {
+        if (password_verify($password, $utilisateur['UsePassword'])) {
             echo "<p>Bonjour ". $utilisateur['UsePseudo']." 👋,</p>";
             echo "<p>tu es connecté !</p>";
         }
@@ -26,6 +25,5 @@ if (isset($_POST) && !empty($_POST)) {
     {
         gerer_exceptions($e);
     }
-
 }
 ?>

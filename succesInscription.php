@@ -8,5 +8,5 @@ require_once "./header.php";
     <h1>redirection-inscription</h1>
     <p>Félicitation, vous êtes inscrit ! 🎉</p>
     <p>cliquer sur le liens pour vous connecter</p>
-    <p><a href="/cours-christophe/front/connexion.php">se connecter</a></p>
+    <p><a href="/cours-christophe/connexion.php">se connecter</a></p>
 </div>

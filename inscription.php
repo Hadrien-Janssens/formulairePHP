@@ -1,26 +1,11 @@
 <?php
-require "../back/traitementFormulaire.php";
 $metaDescription = "ici vous trouverez la page d'inscription de mon site";
 $pageTitre = "inscription";
+require "./back/traitementFormulaire.php";
 require_once "./header.php";
-require_once __DIR__."/../back/database/createUser.php";
-$erreurs = traitementFormulaireInscription($_POST);
+require_once __DIR__."/./back/database/createUser.php";
 ?>
 <div class="container">
-    <!-- le message d'envoie avec succes et envoie de mail-->
-    <?php 
-        if (isset($erreurs['form']) && !$erreurs['form']) {
-            echo "Inscription échouée";
-        }
-        elseif (empty($erreurs) && !empty($_POST)) {
-            createUser($_POST['pseudo'],$_POST["email"],$_POST['password']);
-            echo  "Inscription réussie";
-            header('Location: /cours-christophe/front/succesInscription.php');
-            exit();
-        }
-    ?>
-
-
     <form action="" method="POST">
         <h1>Inscription</h1>
         <input type="hidden" name="formName" value="formInscription">
