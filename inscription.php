@@ -1,9 +1,9 @@
 <?php
-require "../back/traitementFormulaire.php";
+require "./back/traitementFormulaire.php";
 $metaDescription = "ici vous trouverez la page d'inscription de mon site";
 $pageTitre = "inscription";
 require_once "./header.php";
-require_once __DIR__."/../back/models/user_model.php";
+require_once __DIR__."/./back/models/user_model.php";
 print_r($_POST);
 $erreurs = traitementFormulaireInscription($_POST, $regles);
 ?>

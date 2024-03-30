@@ -13,6 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && !empty($_POST)) {
         break;
     case 'formInscription':
         traitementFormulaireInscription($_POST,$regles);
+        
         break;
     case 'null':
         echo "impossible de traiter ce formulaire car le nom du formulaire est introuvable";

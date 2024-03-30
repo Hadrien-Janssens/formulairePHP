@@ -72,5 +72,6 @@ function createUser($pseudo,$email, $password ) {
     catch(\PDOException $e)
     {
         gerer_exceptions($e);
+        
     }
 }
