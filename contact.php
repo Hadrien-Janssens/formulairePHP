@@ -1,9 +1,10 @@
 <?php 
-require_once "./back/traitementFormulaire.php";
-require_once "./back/function/envoyerMail.php";
+// require_once "./function/traitementFormulaire.php";
 $metaDescription = "voici la super description de la page Contact";
 $pageTitre = "contact";
 require_once "./header.php";
+require_once "./core/envoyerMail.php";
+require_once __DIR__."/controllers/contactController.php";
 // $erreurs = traitementFormulaireContact($_POST);
 ?>
 

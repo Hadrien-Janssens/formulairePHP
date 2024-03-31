@@ -1,9 +1,8 @@
 <?php
 $metaDescription = "ici vous trouverez la page d'inscription de mon site";
 $pageTitre = "inscription";
-require "./back/traitementFormulaire.php";
 require_once "./header.php";
-require_once __DIR__."/./back/database/createUser.php";
+require_once __DIR__."/controllers/inscriptionController.php";
 ?>
 <div class="container">
     <form action="" method="POST">
