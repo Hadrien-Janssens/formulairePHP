@@ -11,8 +11,7 @@ function xssSecurity($array) {
 function traitement(array $regles, array $dataArray , ?array $erreurs=[]):array {
   
     foreach ($regles as $key => $value) {
-            
-        if (isset($dataArray[$key])  ) {
+
             //verification required
             if( $regles[$key]['require'] && empty($dataArray[$key]) ) {
                 $erreurs[$key]="champs requis !";
@@ -26,9 +25,9 @@ function traitement(array $regles, array $dataArray , ?array $erreurs=[]):array 
             }
            }
            //verification email valide
-            elseif (!filter_var($dataArray['email'], FILTER_VALIDATE_EMAIL)) {
-                if (!isset($erreurs['email'])) {
-                    $erreurs['email']="Veuillez entrer une adresse mail valide";
+           elseif ($key == 'email') {
+               if (filter_var($dataArray['email'], FILTER_VALIDATE_EMAIL)) {
+                   $erreurs['email']="Veuillez entrer une adresse mail valide";
                 }
             }
             //verification de la confimation du mot de passe
@@ -38,15 +37,5 @@ function traitement(array $regles, array $dataArray , ?array $erreurs=[]):array 
                 }
             }
         }
-        // cas de modification de l'attribut name, renvoie une erreur générale du formulaire 
-        elseif(!empty($dataArray)) {
-            $erreurs['form'] = false ; 
-        }
-    }
-    return [$erreurs, $dataArray];
-}
-
-function traitementFormulaire($dataArray,$regles) {
-    [$erreurs, $dataArray ] = traitement($regles,$dataArray);
     return [$erreurs, $dataArray];
 }
