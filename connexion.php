@@ -1,9 +1,11 @@
 <?php
-$metaDescription = "ici vous trouverez la page d'connexion de mon site";
+$metaDescription = "ici vous trouverez la page de connexion de mon site";
 $pageTitre = "connexion";
 require_once "./header.php";
+require_once __DIR__."/core/gestionAuthentification.php";
 require_once __DIR__."/controllers/connectionController.php";
 ?>
+
 
 <div class="container">
     <form action="" method="POST">
@@ -15,4 +17,5 @@ require_once __DIR__."/controllers/connectionController.php";
         <input type="password" id="password" name="password" required minlength="8" maxlength="72">
         <input type="submit" value="se connecter">
     </form>
+
 </div>

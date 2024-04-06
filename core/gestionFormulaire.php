@@ -3,6 +3,7 @@
 function xssSecurity($array) {
     foreach ($array as $key => $value) {
         $newValue = htmlentities($array[$key]);
+        $newValue = trim($newValue);
         $array[$key]=$newValue;
     }
     return $array;
@@ -12,30 +13,27 @@ function traitement(array $regles, array $dataArray , ?array $erreurs=[]):array 
   
     foreach ($regles as $key => $value) {
 
-            //verification required
-            if( $regles[$key]['require'] && empty($dataArray[$key]) ) {
-                $erreurs[$key]="champs requis !";
+            if ( isset($regles[$key]['require']) && empty($dataArray[$key])) {
+                $erreurs[$key] = "Champs requis !";
+                break;
             }
-            //verification max/min de caracteres
-           elseif (isset($regles[$key]['max']) && isset($regles[$key]['min']) ) {
-            if ( $regles[$key]['max'] < strlen($dataArray[$key]) || $regles[$key]['min'] > strlen($dataArray[$key])) {
-                if (!empty($dataArray[$key])) {
-                    $erreurs[$key]="Ce champs doit contenir entre ". $regles[$key]['min'] ." et ". $regles[$key]['max'] ." caractères";
-                }
+            if (isset($regles[$key]['max']) && $regles[$key]['max'] < strlen($dataArray[$key])) {
+                $erreurs[$key] = "Ce champs doit contenir maximum " . $regles[$key]['max'] . " caractères";
+                break;
             }
-           }
-           //verification email valide
-           elseif ($key == 'email') {
-               if (filter_var($dataArray['email'], FILTER_VALIDATE_EMAIL)) {
-                   $erreurs['email']="Veuillez entrer une adresse mail valide";
-                }
+            if (isset($regles[$key]['min']) && $regles[$key]['min'] > strlen($dataArray[$key])) {
+                $erreurs[$key] = "Ce champs doit contenir minimum " . $regles[$key]['min'] . " caractères";
+                break;
             }
-            //verification de la confimation du mot de passe
-            if ($key == 'confirmation') {
-                if ($dataArray['confirmation'] != $dataArray['password']) {
-                    $erreurs[$key]="Ce champs doit être identique au champs mot de passe";
-                }
+            if ($key == 'email' && !filter_var($dataArray['email'], FILTER_VALIDATE_EMAIL)) {
+                $erreurs['email'] = "Veuillez entrer une adresse mail valide";
+                break;
             }
+            if ($key == 'confirmation' && $dataArray['confirmation'] != $dataArray['password']) {
+                $erreurs[$key] = "Ce champs doit être identique au champs mot de passe";
+                break;
+            }
+            
         }
-    return [$erreurs, $dataArray];
+    return $erreurs;
 }

@@ -2,7 +2,7 @@
 $metaDescription = "ici vous trouverez la page d'inscription de mon site";
 $pageTitre = "inscription";
 require_once "./header.php";
-require_once __DIR__."/controllers/inscriptionController.php";
+require_once "./controllers/inscriptionController.php";
 ?>
 <div class="container">
     <form action="" method="POST">
@@ -15,7 +15,7 @@ require_once __DIR__."/controllers/inscriptionController.php";
             <?=   $erreurs['pseudo'] ?? '' ?>
         </div>
         <label for="email">Email</label>
-        <input type="email" id="email" name="email" required
+        <input id="email" name="email"
             value=<?php if (isset($_POST['email']) && !empty($erreurs)) echo $_POST['email'] ; ?>>
         <div id="name-erreur" class="erreur">
             <?=   $erreurs['email'] ?? '' ?>
